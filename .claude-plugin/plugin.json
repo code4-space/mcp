@@ -1,0 +1,20 @@
+{
+  "name": "code4",
+  "displayName": "Code4",
+  "version": "1.0.0",
+  "description": "Connect Claude Code to Code4: issues, code review, repositories, CI/CD, deployments, documents and team knowledge search.",
+  "author": {
+    "name": "Code4 Space, Inc.",
+    "email": "support@code4.space",
+    "url": "https://code4.space"
+  },
+  "homepage": "https://code4.space/docs/#/integrations/mcp",
+  "repository": "https://github.com/code4-space/mcp",
+  "license": "MIT",
+  "keywords": ["project management", "issue tracker", "code review", "ci/cd", "deployments", "knowledge base"],
+  "icon": "./icons/png/code4-icon-512.png",
+  "documentationUrl": "https://code4.space/docs/#/integrations/mcp",
+  "supportUrl": "https://code4.space/contact/",
+  "privacyPolicyUrl": "https://code4.space/privacy/",
+  "termsOfServiceUrl": "https://code4.space/terms/"
+}

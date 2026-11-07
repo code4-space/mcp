@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "space.code4/mcp",
+  "title": "Code4",
+  "description": "Issues, code reviews, CI/CD, deployments, docs and team knowledge search in Code4.",
+  "version": "1.0.0",
+  "websiteUrl": "https://code4.space/docs/#/integrations/mcp",
+  "repository": {
+    "url": "https://github.com/code4-space/mcp",
+    "source": "github"
+  },
+  "icons": [
+    { "src": "https://mcp.code4.space/icon.svg", "mimeType": "image/svg+xml", "sizes": ["any"] },
+    { "src": "https://mcp.code4.space/icon-512.png", "mimeType": "image/png", "sizes": ["512x512"] },
+    { "src": "https://mcp.code4.space/icon-64.png", "mimeType": "image/png", "sizes": ["64x64"] }
+  ],
+  "remotes": [
+    { "type": "streamable-http", "url": "https://mcp.code4.space/mcp" }
+  ]
+}

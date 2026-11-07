@@ -1,0 +1,17 @@
+{
+  "name": "code4",
+  "description": "Code4 plugins for Claude Code.",
+  "owner": {
+    "name": "Code4 Space, Inc.",
+    "email": "support@code4.space",
+    "url": "https://code4.space"
+  },
+  "plugins": [
+    {
+      "name": "code4",
+      "source": "./",
+      "description": "Connect Claude Code to Code4: issues, code review, repositories, CI/CD, deployments, documents and team knowledge search.",
+      "category": "development"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "code4",
+  "version": "1.0.0",
+  "description": "Work with Code4 issues, code reviews, pipelines, deployments and team knowledge from Gemini CLI.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "c4": {
+      "httpUrl": "https://mcp.code4.space/mcp"
+    }
+  }
+}

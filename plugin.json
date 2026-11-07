@@ -1,0 +1,75 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "code4",
+  "version": "1.0.0",
+  "description": "Connect AI assistants to Code4: issues, code review, repositories, CI/CD, deployments, documents and team knowledge search.",
+  "author": {
+    "name": "Code4 Space, Inc.",
+    "email": "support@code4.space",
+    "url": "https://code4.space"
+  },
+  "homepage": "https://code4.space/docs/#/integrations/mcp",
+  "repository": "https://github.com/code4-space/mcp",
+  "license": "MIT",
+  "keywords": [
+    "project management",
+    "issue tracker",
+    "code review",
+    "merge requests",
+    "git hosting",
+    "ci/cd",
+    "pipelines",
+    "deployments",
+    "kubernetes",
+    "devops",
+    "knowledge base",
+    "team search",
+    "documentation",
+    "sprints",
+    "time tracking"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Code4",
+        "shortDescription": "Issues, code review and CI/CD",
+        "longDescription": "Code4 is one workspace for small software teams: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Everything the team writes is indexed into one knowledge base that answers under each person's own permissions.\n\nWith this connector, your AI assistant works in your Code4 organization as you:\n- Issues and sprints: find, create and update issues, comment, add subtasks and checklist items, plan sprints and boards, track time.\n- Code review: read a merge request with its diff, outline and discussion, reply in threads, manage reviewers and set your review status.\n- Repositories: browse branches, commits and files, search code, find symbols, see why a line changed, and commit changes.\n- CI/CD: read pipeline runs, step logs and test results; run, cancel and rerun pipelines.\n- Deployments: list environments and deployments, preview a deploy or a rollback, then deploy, roll back, restart or scale a service.\n- Documents: read, create and update team documents and restore earlier revisions.\n- Knowledge: search what the team discussed and decided across issues, reviews, documents, chat, commit messages, code and call transcripts.\n\nYou sign in with your Code4 account over OAuth. The connector sees only what your account can see and acts with your permissions. Read-only tools are marked read-only. Tools that deploy, merge, delete, rewrite branches or change secrets are marked destructive, so assistants that honor tool annotations ask you before running them. Secret tools return names, not values, and logs are masked on a best-effort basis. You can revoke access at any time in Code4 under Preferences → AI Integrations → Connected AI clients.\n\nWho it is for: developers, tech leads and project managers on teams that already run their work in Code4.\n\nLimitations:\n- It does not send chat messages or start calls. Chat is reachable through knowledge search.\n- Call transcripts and summaries exist only for calls where participants agreed to AI, and an administrator can turn off MCP access to them.\n- Deploy tools need an environment connected to your own Kubernetes cluster.\n- Code4 adds no confirmation step of its own. Your assistant decides when to ask you, based on the tool annotations.\n\nRequires a Code4 account.",
+        "developerName": "Code4 Space, Inc.",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Find, create and update issues",
+          "Plan sprints and boards",
+          "Read and reply to code reviews",
+          "Browse and search repositories",
+          "Read pipeline runs and logs",
+          "Run and rerun pipelines",
+          "Preview and run deployments",
+          "Read and edit team documents",
+          "Search team knowledge"
+        ],
+        "websiteURL": "https://code4.space",
+        "supportURL": "https://code4.space/contact/",
+        "privacyPolicyURL": "https://code4.space/privacy/",
+        "termsOfServiceURL": "https://code4.space/terms/",
+        "defaultPrompt": [
+          "Show my open issues in Code4, highest priority first.",
+          "Summarize a merge request and list its unresolved threads.",
+          "Why did the last pipeline run on main fail?"
+        ],
+        "brandColor": "#e0533c",
+        "brandColorDark": "#f07f6c",
+        "composerIcon": "./icons/png/code4-icon-small-96.png",
+        "composerIconDark": "./icons/png/code4-icon-small-96.png",
+        "logo": "./icons/png/code4-icon-512.png",
+        "logoDark": "./icons/png/code4-icon-512.png"
+      },
+      "review": {
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "First release. Work with Code4 issues, sprints, boards, code reviews, repositories, CI/CD pipelines, deployments, documents and team knowledge search from ChatGPT and Codex, with your own Code4 permissions."
+      }
+    }
+  }
+}
