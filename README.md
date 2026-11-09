@@ -8,11 +8,6 @@
   Connect Claude, ChatGPT, Cursor, VS Code, Gemini CLI and other AI assistants to your Code4 workspace.
 </p>
 
-<p align="center">
-  <a href="https://cursor.com/en/install-mcp?name=c4&config=eyJ1cmwiOiJodHRwczovL21jcC5jb2RlNC5zcGFjZS9tY3AifQ%3D%3D"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Add to Cursor" height="32"></a>
-  <a href="https://vscode.dev/redirect/mcp/install?name=c4&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.code4.space%2Fmcp%22%7D"><img src="https://img.shields.io/badge/VS_Code-Install_Code4-0098FF?logo=visualstudiocode&logoColor=white" alt="Install in VS Code" height="32"></a>
-</p>
-
 [Code4](https://code4.space) is one workspace for small software teams: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Everything the team writes is indexed into one knowledge base that answers under each person's own permissions.
 
 The Code4 MCP server is a hosted [Model Context Protocol](https://modelcontextprotocol.io) server. With it, your AI assistant works with your issues, code reviews, repositories, pipelines, deployments and documents, and searches what your team discussed and decided, as you and with your permissions.
@@ -47,6 +42,8 @@ This repository holds the public listing files for MCP directories and clients: 
 - If you add the server by hand, name it `c4`. The ready-made commands and prompts that Code4 gives you for coding agents call the tools as `mcp__c4__*`. When you install Code4 from a client's directory or as a plugin, the client picks the name, and that is fine.
 
 Ready-made commands are also in the Code4 app under **Preferences → AI Integrations**.
+
+**Current status:** sign-in works today for Claude (claude.ai, Claude Desktop and Claude Code). Sign-in for ChatGPT, Cursor, VS Code and the other clients below is opening soon; until then they cannot complete the OAuth step.
 
 We test new client versions as they come out. If a client below does not connect, write to support@code4.space with the client name and version.
 
