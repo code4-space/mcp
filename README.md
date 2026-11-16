@@ -276,7 +276,7 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `complete_checklist_items` | Check off checklist items | write |
 | `update_checklist_item` | Update checklist item | destructive |
 | `delete_checklist_item` | Delete checklist item | destructive |
-| `promote_checklist_item` | Turn checklist item into issue | write |
+| `promote_checklist_item` | Turn checklist item into issue | destructive |
 | `update_issue` | Update issue | destructive |
 | `comment_issue` | Comment on issue | write |
 | `list_issue_comments` | List issue comments | read |
@@ -343,14 +343,14 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | Tool | Title | Kind |
 |---|---|---|
 | `list_sprints` | List sprints | read |
-| `create_sprint` | Create sprint | write |
+| `create_sprint` | Create sprint | destructive |
 | `update_sprint` | Update sprint | destructive |
 | `start_sprint` | Start sprint | destructive |
 | `complete_sprint` | Complete sprint | destructive |
 | `delete_sprint` | Delete sprint | destructive |
 | `add_issue_to_sprint` | Add issue to sprint | write |
 | `remove_issue_from_sprint` | Remove issue from sprint | destructive |
-| `carry_over_sprint_issues` | Carry over sprint issues | write |
+| `carry_over_sprint_issues` | Carry over sprint issues | destructive |
 
 </details>
 
@@ -376,7 +376,7 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `set_review_file_viewed` | Mark review file as viewed | write |
 | `set_code_review_status` | Set code review status | destructive |
 | `set_code_review_reviewers` | Set code review reviewers | destructive |
-| `add_code_review_reviewer` | Add code review reviewer | write |
+| `add_code_review_reviewer` | Add code review reviewer | destructive |
 | `remove_code_review_reviewer` | Remove code review reviewer | destructive |
 | `set_my_review_status` | Set my reviewer verdict | write |
 | `finish_review_work` | Hand review back to reviewers | write |
@@ -596,7 +596,7 @@ The live list, with full descriptions and annotations, is what your client recei
 - Tools that deploy, roll back, merge or rebase, delete, commit to a branch, run pipelines, change secrets, delete or bulk-edit issues, change a project's visibility or move an issue to another project are marked `destructiveHint`.
 - So are tools that overwrite or remove existing content, even when the change can be restored from history: editing an issue, a document or a comment, replacing a list of reviewers or parents, removing a link or a watcher, archiving, closing a review, moving a document.
 - Tools that only add data or set a state mark (create, comment, log time, mark done or viewed, reorder) are not destructive.
-- All tools are marked `openWorldHint: false`: they only call the Code4 API.
+- `create_repository` is marked `openWorldHint`: with `importUrl` the Code4 server clones a repository from the external address you give, and with `importMirror` keeps fetching from it. All other tools are marked `openWorldHint: false`: they only call the Code4 API.
 
 **Your client decides when to ask you.** Code4 does not add a confirmation step of its own for MCP clients. Clients such as Claude, ChatGPT, Cursor and VS Code use the annotations and your client settings to decide which calls need your approval. Review your client's approval settings before you let it run destructive tools without asking.
 
