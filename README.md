@@ -259,7 +259,7 @@ Any client that supports remote MCP servers with OAuth can connect. Most accept 
 
 ## Tools
 
-The server has more than 200 tools. Each tool has a human-readable title and MCP annotations: read-only tools carry `readOnlyHint`, and tools that change data that is hard to restore carry `destructiveHint`. The lists below are grouped by area; **read** marks a read-only tool, **write** marks a tool that changes data.
+The server has more than 200 tools. Each tool has a human-readable title and MCP annotations: read-only tools carry `readOnlyHint`, and tools that may overwrite, remove or irreversibly change data carry `destructiveHint`. The lists below are grouped by area; **read** marks a read-only tool, **write** marks a tool that only adds data or sets a state mark (done, viewed, order), **destructive** marks a tool with `destructiveHint`.
 
 <details>
 <summary><b>Issues</b> (40)</summary>
@@ -272,40 +272,40 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `create_issue` | Create issue | write |
 | `create_subtask` | Create subtask | write |
 | `create_subtasks` | Create subtasks in bulk | write |
-| `set_issue_parents` | Set issue parents | write |
+| `set_issue_parents` | Set issue parents | destructive |
 | `list_checklist` | List issue checklist | read |
 | `add_checklist` | Add checklist items | write |
 | `complete_checklist_items` | Check off checklist items | write |
-| `update_checklist_item` | Update checklist item | write |
-| `delete_checklist_item` | Delete checklist item | write |
+| `update_checklist_item` | Update checklist item | destructive |
+| `delete_checklist_item` | Delete checklist item | destructive |
 | `promote_checklist_item` | Turn checklist item into issue | write |
-| `update_issue` | Update issue | write |
+| `update_issue` | Update issue | destructive |
 | `comment_issue` | Comment on issue | write |
 | `list_issue_comments` | List issue comments | read |
-| `update_issue_comment` | Edit my issue comment | write |
-| `delete_issue_comment` | Delete my issue comment | write |
-| `toggle_reaction` | Toggle reaction | write |
+| `update_issue_comment` | Edit my issue comment | destructive |
+| `delete_issue_comment` | Delete my issue comment | destructive |
+| `toggle_reaction` | Toggle reaction | destructive |
 | `list_boards` | List boards | read |
 | `list_issue_boards` | List boards of an issue | read |
 | `add_issue_to_board` | Add issue to board | write |
-| `remove_issue_from_board` | Remove issue from board | write |
-| `bulk_update_issues` | Update issues in bulk | write |
-| `bulk_delete_issues` | Delete issues in bulk | write |
-| `delete_issue` | Delete issue | write |
+| `remove_issue_from_board` | Remove issue from board | destructive |
+| `bulk_update_issues` | Update issues in bulk | destructive |
+| `bulk_delete_issues` | Delete issues in bulk | destructive |
+| `delete_issue` | Delete issue | destructive |
 | `list_deleted_issues` | List deleted issues | read |
 | `restore_issue` | Restore deleted issue | write |
-| `purge_issue` | Permanently erase issue | write |
+| `purge_issue` | Permanently erase issue | destructive |
 | `list_project_tags` | List project tags | read |
-| `move_issue` | Move issue to another project | write |
+| `move_issue` | Move issue to another project | destructive |
 | `list_issue_code_links` | List issue code links | read |
 | `link_issue_code` | Link code to issue | write |
-| `unlink_issue_code` | Unlink code from issue | write |
+| `unlink_issue_code` | Unlink code from issue | destructive |
 | `list_issue_watchers` | List issue watchers | read |
 | `add_issue_watcher` | Add issue watcher | write |
-| `remove_issue_watcher` | Remove issue watcher | write |
+| `remove_issue_watcher` | Remove issue watcher | destructive |
 | `list_description_versions` | List issue history versions | read |
 | `get_description_version` | Get issue history version | read |
-| `restore_description_version` | Restore issue history version | write |
+| `restore_description_version` | Restore issue history version | destructive |
 
 </details>
 
@@ -316,25 +316,25 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 |---|---|---|
 | `list_issue_fields` | List issue fields | read |
 | `create_issue_field` | Create issue field | write |
-| `update_issue_field` | Update issue field | write |
-| `delete_issue_field` | Delete issue field | write |
+| `update_issue_field` | Update issue field | destructive |
+| `delete_issue_field` | Delete issue field | destructive |
 | `reorder_issue_fields` | Reorder issue fields | write |
 | `add_issue_field_option` | Add issue field option | write |
-| `update_issue_field_option` | Update issue field option | write |
-| `delete_issue_field_option` | Delete issue field option | write |
+| `update_issue_field_option` | Update issue field option | destructive |
+| `delete_issue_field_option` | Delete issue field option | destructive |
 | `reorder_issue_field_options` | Reorder issue field options | write |
-| `set_issue_custom_values` | Set issue custom field values | write |
+| `set_issue_custom_values` | Set issue custom field values | destructive |
 | `create_issue_status` | Create issue status | write |
-| `update_issue_status` | Update issue status | write |
-| `delete_issue_status` | Delete issue status | write |
+| `update_issue_status` | Update issue status | destructive |
+| `delete_issue_status` | Delete issue status | destructive |
 | `reorder_issue_statuses` | Reorder issue statuses | write |
 | `get_status_usage` | Get issue status usage | read |
-| `reassign_issue_status` | Move all issues to another status | write |
+| `reassign_issue_status` | Move all issues to another status | destructive |
 | `get_board` | Get board | read |
 | `create_board` | Create board | write |
-| `update_board` | Update board | write |
-| `set_board_columns` | Set board columns | write |
-| `delete_board` | Delete board | write |
+| `update_board` | Update board | destructive |
+| `set_board_columns` | Set board columns | destructive |
+| `delete_board` | Delete board | destructive |
 | `set_card_rank` | Reorder board card | write |
 
 </details>
@@ -346,12 +346,12 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 |---|---|---|
 | `list_sprints` | List sprints | read |
 | `create_sprint` | Create sprint | write |
-| `update_sprint` | Update sprint | write |
-| `start_sprint` | Start sprint | write |
-| `complete_sprint` | Complete sprint | write |
-| `delete_sprint` | Delete sprint | write |
+| `update_sprint` | Update sprint | destructive |
+| `start_sprint` | Start sprint | destructive |
+| `complete_sprint` | Complete sprint | destructive |
+| `delete_sprint` | Delete sprint | destructive |
 | `add_issue_to_sprint` | Add issue to sprint | write |
-| `remove_issue_from_sprint` | Remove issue from sprint | write |
+| `remove_issue_from_sprint` | Remove issue from sprint | destructive |
 | `carry_over_sprint_issues` | Carry over sprint issues | write |
 
 </details>
@@ -376,15 +376,15 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `create_code_review` | Create merge request | write |
 | `reply_code_review` | Reply in code review | write |
 | `set_review_file_viewed` | Mark review file as viewed | write |
-| `set_code_review_status` | Set code review status | write |
-| `set_code_review_reviewers` | Set code review reviewers | write |
+| `set_code_review_status` | Set code review status | destructive |
+| `set_code_review_reviewers` | Set code review reviewers | destructive |
 | `add_code_review_reviewer` | Add code review reviewer | write |
-| `remove_code_review_reviewer` | Remove code review reviewer | write |
+| `remove_code_review_reviewer` | Remove code review reviewer | destructive |
 | `set_my_review_status` | Set my reviewer verdict | write |
 | `finish_review_work` | Hand review back to reviewers | write |
 | `resume_review_work` | Take review back to fix | write |
-| `merge_code_review` | Merge code review | write |
-| `delete_code_review` | Delete code review | write |
+| `merge_code_review` | Merge code review | destructive |
+| `delete_code_review` | Delete code review | destructive |
 
 </details>
 
@@ -410,10 +410,10 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `list_file_commits` | List file history | read |
 | `blame_repo_file` | Blame repository file | read |
 | `explain_code_history` | Explain code history | read |
-| `commit_repo_files` | Commit files to repository | write |
-| `merge_branch` | Merge branch without review | write |
-| `rebase_branch` | Rebase branch | write |
-| `delete_branch` | Delete branch | write |
+| `commit_repo_files` | Commit files to repository | destructive |
+| `merge_branch` | Merge branch without review | destructive |
+| `rebase_branch` | Rebase branch | destructive |
+| `delete_branch` | Delete branch | destructive |
 
 </details>
 
@@ -428,10 +428,10 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `get_step_logs` | Get pipeline step logs | read |
 | `get_run_logs` | Get pipeline run logs | read |
 | `get_run_tests` | Get pipeline run test results | read |
-| `run_pipeline` | Run pipeline | write |
-| `cancel_pipeline_run` | Cancel pipeline run | write |
-| `rerun_pipeline_run` | Rerun pipeline run | write |
-| `rerun_step` | Rerun pipeline step | write |
+| `run_pipeline` | Run pipeline | destructive |
+| `cancel_pipeline_run` | Cancel pipeline run | destructive |
+| `rerun_pipeline_run` | Rerun pipeline run | destructive |
+| `rerun_step` | Rerun pipeline step | destructive |
 
 </details>
 
@@ -455,13 +455,13 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `get_service_pods` | Get service pods | read |
 | `get_service_logs` | Get service logs | read |
 | `create_environment` | Create environment | write |
-| `deploy_service` | Deploy service | write |
-| `approve_deployment` | Approve deployment | write |
-| `rollback_service` | Roll back service | write |
-| `restart_service` | Restart service | write |
-| `scale_service` | Scale service | write |
-| `promote_environment` | Promote between environments | write |
-| `update_environment_config` | Replace environment config | write |
+| `deploy_service` | Deploy service | destructive |
+| `approve_deployment` | Approve deployment | destructive |
+| `rollback_service` | Roll back service | destructive |
+| `restart_service` | Restart service | destructive |
+| `scale_service` | Scale service | destructive |
+| `promote_environment` | Promote between environments | destructive |
+| `update_environment_config` | Replace environment config | destructive |
 
 </details>
 
@@ -475,8 +475,8 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `list_package_files` | List package files | read |
 | `get_package_download_url` | Get package download link | read |
 | `list_secrets` | List secret names | read |
-| `set_secret` | Set secret | write |
-| `delete_secret` | Delete secret | write |
+| `set_secret` | Set secret | destructive |
+| `delete_secret` | Delete secret | destructive |
 
 </details>
 
@@ -491,18 +491,18 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `list_document_revisions` | List document revisions | read |
 | `get_document_revision` | Get document revision | read |
 | `create_document` | Create document | write |
-| `update_document` | Update document | write |
-| `move_document` | Move document | write |
-| `archive_document` | Archive document | write |
+| `update_document` | Update document | destructive |
+| `move_document` | Move document | destructive |
+| `archive_document` | Archive document | destructive |
 | `restore_document` | Restore document | write |
-| `delete_document` | Delete document | write |
-| `restore_document_revision` | Restore document revision | write |
+| `delete_document` | Delete document | destructive |
+| `restore_document_revision` | Restore document revision | destructive |
 | `create_document_folder` | Create document folder | write |
-| `rename_document_folder` | Rename document folder | write |
-| `move_document_folder` | Move document folder | write |
-| `archive_document_folder` | Archive document folder | write |
+| `rename_document_folder` | Rename document folder | destructive |
+| `move_document_folder` | Move document folder | destructive |
+| `archive_document_folder` | Archive document folder | destructive |
 | `restore_document_folder` | Restore document folder | write |
-| `delete_document_folder` | Delete document folder | write |
+| `delete_document_folder` | Delete document folder | destructive |
 
 </details>
 
@@ -534,20 +534,20 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `list_project_members` | List project members | read |
 | `list_repositories` | List repositories | read |
 | `create_project` | Create project | write |
-| `update_project` | Update project and members | write |
+| `update_project` | Update project and members | destructive |
 | `create_repository` | Create repository | write |
 | `get_platform_guide` | Get platform guide | read |
 | `read_docs` | Read product documentation | read |
 | `get_organization_rules` | Get organization rules for agents | read |
 | `get_project_rules` | Get project rules for agents | read |
-| `set_organization_rules` | Set organization rules for agents | write |
-| `set_project_rules` | Set project rules for agents | write |
+| `set_organization_rules` | Set organization rules for agents | destructive |
+| `set_project_rules` | Set project rules for agents | destructive |
 | `list_skills` | List team skills | read |
 | `get_skill` | Get team skill | read |
 | `read_skill_file` | Read team skill file | read |
 | `create_skill` | Create team skill | write |
-| `update_skill` | Update team skill | write |
-| `delete_skill` | Delete team skill | write |
+| `update_skill` | Update team skill | destructive |
+| `delete_skill` | Delete team skill | destructive |
 
 </details>
 
@@ -559,17 +559,17 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `list_todo` | List my to-dos | read |
 | `list_todo_history` | List completed to-dos | read |
 | `create_todo` | Create to-do | write |
-| `update_todo` | Update to-do | write |
+| `update_todo` | Update to-do | destructive |
 | `complete_todo` | Complete to-do | write |
 | `reopen_todo` | Reopen to-do | write |
 | `reorder_todo` | Reorder to-dos | write |
-| `delete_todo` | Delete to-do | write |
+| `delete_todo` | Delete to-do | destructive |
 | `convert_todo_to_issue` | Convert to-do to issue | write |
 | `list_time_entries` | List time entries | read |
 | `get_current_timer` | Get my running timer | read |
 | `log_time` | Log time | write |
-| `update_time_entry` | Update time entry | write |
-| `delete_time_entry` | Delete time entry | write |
+| `update_time_entry` | Update time entry | destructive |
+| `delete_time_entry` | Delete time entry | destructive |
 | `start_timer` | Start timer | write |
 | `pause_timer` | Pause timer | write |
 | `resume_timer` | Resume timer | write |
@@ -596,6 +596,8 @@ The live list, with full descriptions and annotations, is what your client recei
 
 - Read-only tools, almost half of them, are marked `readOnlyHint`.
 - Tools that deploy, roll back, merge or rebase, delete, commit to a branch, run pipelines, change secrets, delete or bulk-edit issues, change a project's visibility or move an issue to another project are marked `destructiveHint`.
+- So are tools that overwrite or remove existing content, even when the change can be restored from history: editing an issue, a document or a comment, replacing a list of reviewers or parents, removing a link or a watcher, archiving, closing a review, moving a document.
+- Tools that only add data or set a state mark (create, comment, log time, mark done or viewed, reorder) are not destructive.
 - All tools are marked `openWorldHint: false`: they only call the Code4 API.
 
 **Your client decides when to ask you.** Code4 does not add a confirmation step of its own for MCP clients. Clients such as Claude, ChatGPT, Cursor and VS Code use the annotations and your client settings to decide which calls need your approval. Review your client's approval settings before you let it run destructive tools without asking.

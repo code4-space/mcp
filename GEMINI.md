@@ -12,7 +12,7 @@ The server uses OAuth with the user's own Code4 account. Gemini CLI opens the Co
 
 ## Tool annotations
 
-Read-only tools carry `readOnlyHint`. Tools that deploy, merge, delete, rewrite branches, run pipelines or change secrets carry `destructiveHint`. Code4 adds no confirmation step of its own; Gemini CLI asks the user according to its own confirmation settings.
+Read-only tools carry `readOnlyHint`. Tools that deploy, merge, delete, rewrite branches, run pipelines, change secrets, or overwrite or remove existing content carry `destructiveHint`. Code4 adds no confirmation step of its own; Gemini CLI asks the user according to its own confirmation settings.
 
 ## Links
 

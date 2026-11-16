@@ -8,6 +8,8 @@ Documentation only; `server.json` and the manifests keep version 1.0.0.
 
 - README: sign-in status per client (tested with Claude and Cursor), product description, knowledge base sources (source code is not in it).
 - README: added `read_docs`, `list_clusters`, `list_namespace_options` and `create_environment` to the tool tables.
+- Tools that overwrite or remove existing content (editing an issue or a document, replacing a list, removing a link, archiving, closing a review, moving a document) now carry `destructiveHint`; the tool tables mark them **destructive**.
+- The server instructions describe the tools instead of directing the model: project rules are context for work the user asks for, never authorization.
 - Updated the path to connected AI clients (Preferences → AI Integrations → AI clients) and the note on call transcripts.
 
 ## 1.0.0
