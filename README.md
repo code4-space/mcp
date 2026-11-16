@@ -5,10 +5,10 @@
 <h1 align="center">Code4 MCP server</h1>
 
 <p align="center">
-  Connect Claude, ChatGPT, Cursor, VS Code, Gemini CLI and other AI assistants to your Code4 workspace.
+  Connect Claude, Cursor and other MCP clients with OAuth sign-in to your Code4 workspace.
 </p>
 
-[Code4](https://code4.space) is one workspace for small software teams: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Everything the team writes is indexed into one knowledge base that answers under each person's own permissions.
+[Code4](https://code4.space) is a software development platform for teams and AI agents: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Chat messages, issues, code reviews, documents, call transcripts and commit messages go into one knowledge base that answers under each person's own permissions. Source code is not in the knowledge base: assistants search it with the repository tools.
 
 The Code4 MCP server is a hosted [Model Context Protocol](https://modelcontextprotocol.io) server. With it, your AI assistant works with your issues, code reviews, repositories, pipelines, deployments and documents, and searches what your team discussed and decided, as you and with your permissions.
 
@@ -41,9 +41,9 @@ This repository holds the public listing files for MCP directories and clients: 
 - Your AI client must support remote MCP servers over Streamable HTTP **with OAuth sign-in**. Code4 does not accept a static token in a header, so clients that only support API keys cannot connect.
 - If you add the server by hand, name it `c4`. The ready-made commands and prompts that Code4 gives you for coding agents call the tools as `mcp__c4__*`. When you install Code4 from a client's directory or as a plugin, the client picks the name, and that is fine.
 
-Ready-made commands are also in the Code4 app under **Preferences → AI Integrations**.
+Ready-made commands are also in the Code4 app under **Preferences → AI Integrations → AI clients**.
 
-**Current status:** sign-in works today for Claude (claude.ai, Claude Desktop and Claude Code). Sign-in for ChatGPT, Cursor, VS Code and the other clients below is opening soon; until then they cannot complete the OAuth step.
+**Current status:** sign-in is tested end to end with Claude (claude.ai, Claude Desktop and Claude Code) and Cursor. The other clients below use the same OAuth sign-in, but we have not tested each of them end to end yet; their sections say so.
 
 We test new client versions as they come out. If a client below does not connect, write to support@code4.space with the client name and version.
 
@@ -77,6 +77,8 @@ On Team and Enterprise plans, an Owner first adds the connector in **Organizatio
 
 ### ChatGPT
 
+Sign-in from ChatGPT is not tested end to end yet. If it does not connect, write to support@code4.space.
+
 1. Open **Settings → Apps → Advanced settings** and turn on **Developer mode**.
 2. In **Settings → Apps**, click **Create app**.
 3. Name: `Code4`. MCP server URL: `https://mcp.code4.space/mcp`. Authentication: **OAuth**.
@@ -85,6 +87,8 @@ On Team and Enterprise plans, an Owner first adds the connector in **Organizatio
 To use it, choose **Developer mode** from the **+** menu in a conversation and select Code4. Developer mode availability depends on your ChatGPT plan.
 
 ### Codex CLI
+
+Sign-in from Codex is not tested end to end yet. If it does not connect, write to support@code4.space.
 
 ```sh
 codex mcp add c4 --url https://mcp.code4.space/mcp
@@ -117,6 +121,8 @@ Open **Cursor Settings → MCP** and click **Connect** next to `c4` if Cursor as
 
 ### VS Code (GitHub Copilot)
 
+Sign-in from VS Code is not tested end to end yet. If it does not connect, write to support@code4.space.
+
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Code4-0098FF?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=c4&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.code4.space%2Fmcp%22%7D)
 
 The button opens VS Code with this install link:
@@ -147,6 +153,8 @@ VS Code sends at most 128 tools per request. Code4 has more, so open **Configure
 
 ### Gemini CLI
 
+Sign-in from Gemini CLI is not tested end to end yet. If it does not connect, write to support@code4.space.
+
 Install the extension from this repository:
 
 ```sh
@@ -169,9 +177,11 @@ Or in `~/.gemini/settings.json`:
 }
 ```
 
-Gemini CLI opens the sign-in page the first time it calls a Code4 tool.
+Gemini CLI opens the sign-in page the first time it calls a Code4 tool. You can also start sign-in with `/mcp auth c4` in a Gemini CLI session.
 
 ### Devin Desktop (formerly Windsurf)
+
+Sign-in from Devin Desktop and Windsurf is not tested end to end yet. If it does not connect, write to support@code4.space.
 
 Add this to `~/.config/devin/mcp_config.json` (on Windows, `%APPDATA%\devin\mcp_config.json`):
 
@@ -197,6 +207,8 @@ When the server shows **Needs auth**, click **Authenticate**.
 
 ### Zed
 
+Sign-in from Zed is not tested end to end yet. If it does not connect, write to support@code4.space.
+
 Add this to your Zed `settings.json`:
 
 ```json
@@ -210,6 +222,8 @@ Add this to your Zed `settings.json`:
 Zed starts the sign-in flow on its own.
 
 ### Cline
+
+Sign-in from Cline is not tested end to end yet. If it does not connect, write to support@code4.space.
 
 In **MCP Servers → Configure**, add this to `cline_mcp_settings.json`:
 
@@ -422,11 +436,13 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 </details>
 
 <details>
-<summary><b>Environments and deployments</b> (19)</summary>
+<summary><b>Environments and deployments</b> (22)</summary>
 
 | Tool | Title | Kind |
 |---|---|---|
 | `list_environments` | List environments | read |
+| `list_clusters` | List clusters | read |
+| `list_namespace_options` | List namespace options | read |
 | `list_deployments` | List deployments | read |
 | `get_deployment` | Get deployment | read |
 | `get_deployment_changes` | Get deployment changes | read |
@@ -438,6 +454,7 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `get_service_operation` | Get service operation | read |
 | `get_service_pods` | Get service pods | read |
 | `get_service_logs` | Get service logs | read |
+| `create_environment` | Create environment | write |
 | `deploy_service` | Deploy service | write |
 | `approve_deployment` | Approve deployment | write |
 | `rollback_service` | Roll back service | write |
@@ -505,7 +522,7 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 </details>
 
 <details>
-<summary><b>Projects, people, agent rules and skills</b> (21)</summary>
+<summary><b>Projects, people, agent rules and skills</b> (22)</summary>
 
 | Tool | Title | Kind |
 |---|---|---|
@@ -520,6 +537,7 @@ The server has more than 200 tools. Each tool has a human-readable title and MCP
 | `update_project` | Update project and members | write |
 | `create_repository` | Create repository | write |
 | `get_platform_guide` | Get platform guide | read |
+| `read_docs` | Read product documentation | read |
 | `get_organization_rules` | Get organization rules for agents | read |
 | `get_project_rules` | Get project rules for agents | read |
 | `set_organization_rules` | Set organization rules for agents | write |
@@ -593,7 +611,7 @@ The live list, with full descriptions and annotations, is what your client recei
 
 **Project rules are conventions, not permissions.** Your organization and projects can keep rules and skills for coding agents. Any project member can write them, so they describe how to work but never authorize actions you did not ask for.
 
-**Revoke access at any time.** In Code4, open **Preferences → AI Integrations → Connected AI clients** and click **Revoke** next to the client. It loses access immediately, and open connections are closed. **Restore** brings it back; the client then needs to sign in again. You can also end sign-in sessions under **Preferences → Security & Access**.
+**Revoke access at any time.** In Code4, open **Preferences → AI Integrations → AI clients**, open the **...** menu of the client and choose **Revoke**. It loses access immediately, and open connections are closed. **Restore** in the same menu brings it back; the client then needs to sign in again. You can also end sign-in sessions under **Preferences → Security & Access**.
 
 To report a vulnerability, see [SECURITY.md](SECURITY.md).
 
@@ -602,7 +620,7 @@ To report a vulnerability, see [SECURITY.md](SECURITY.md).
 - **Your assistant receives what the tools return.** When a tool runs, its result goes to your AI client and, through it, to the model provider your client uses. That provider's terms apply to this data. Connect only clients you trust with your project data.
 - **The MCP server keeps no copy of tool results.** It forwards each call to the Code4 API with your sign-in token. It keeps only short-lived fingerprints of the issue and document text it last showed you, so that your assistant's edits merge with teammates' live edits instead of overwriting them. Request logs contain the time, the request path and the client's user agent, not request or response bodies.
 - **What Code4 records about AI clients:** which clients you connected (the name each client gave itself, first and last use), how many tool calls each client made, and which changes AI clients made in your name, without the content of the request. AI activity records are kept for 13 months.
-- **Call transcripts.** Transcripts and summaries exist only for calls where participants agreed to AI. An organization administrator can turn off MCP access to them in **Call settings**.
+- **Call transcripts.** Transcripts and summaries exist only for calls where AI analysis was turned on, and everyone in such a call sees a notice that it is transcribed. The assistant reads only the calls your account can see.
 
 Details: [Privacy Policy](https://code4.space/privacy/) and [Terms of Service](https://code4.space/terms/).
 
@@ -612,7 +630,7 @@ Details: [Privacy Policy](https://code4.space/privacy/) and [Terms of Service](h
 Start the sign-in from the client: `/mcp` → `c4` → Authenticate in Claude Code, `codex mcp login c4` in Codex, **Connect** or **Authenticate** next to the server in editors.
 
 **"Access for this client was revoked."**
-Someone revoked this client in Connected AI clients. Open **Preferences → AI Integrations → Connected AI clients**, click **Restore**, then sign in again from the client.
+Someone revoked this client. Open **Preferences → AI Integrations → AI clients**, choose **Restore** in the client's **...** menu, then sign in again from the client.
 
 **Claude cannot finish connecting.**
 Edit the connector, open **Advanced settings → OAuth client** and choose **Register automatically**.

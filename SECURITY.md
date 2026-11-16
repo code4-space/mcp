@@ -27,4 +27,4 @@ Out of scope: denial of service, social engineering, and findings that need a co
 
 ## How access works
 
-The server accepts only OAuth sign-in with a Code4 account. Every tool call runs with the signed-in person's permissions. People can revoke a connected AI client at any time in Code4 under **Preferences → AI Integrations → Connected AI clients**.
+The server accepts only OAuth sign-in with a Code4 account. Every tool call runs with the signed-in person's permissions. People can revoke a connected AI client at any time in Code4 under **Preferences → AI Integrations → AI clients**.

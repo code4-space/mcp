@@ -2,13 +2,13 @@
 
 This extension connects Gemini CLI to the Code4 MCP server at `https://mcp.code4.space/mcp`.
 
-Code4 is one workspace for small software teams: issues and boards, git hosting and code review, CI/CD pipelines, deployments, documents, chat and calls, with one knowledge base over all of it.
+Code4 is a software development platform for teams and AI agents: issues and boards, git hosting and code review, CI/CD pipelines, deployments, documents, chat and calls. Its knowledge base holds chat messages, issues, code reviews, documents, call transcripts and commit messages. Source code is not in the knowledge base: search it with `search_repo_code` and `find_symbol`.
 
 The server is named `c4`. Its tools cover issues and sprints, code review, repositories, CI/CD pipelines, deployments, documents, time tracking, personal to-dos and team knowledge search.
 
 ## Sign-in
 
-The server uses OAuth with the user's own Code4 account. Gemini CLI opens the Code4 sign-in page the first time it calls a Code4 tool. The tools see only what that account can see and act with its permissions.
+The server uses OAuth with the user's own Code4 account. Gemini CLI opens the Code4 sign-in page the first time it calls a Code4 tool; `/mcp auth c4` starts sign-in by hand. The tools see only what that account can see and act with its permissions.
 
 ## Tool annotations
 
