@@ -5,7 +5,7 @@
 <h1 align="center">Code4 MCP server</h1>
 
 <p align="center">
-  Connect Claude, Cursor and other MCP clients with OAuth sign-in to your Code4 workspace.
+  Connect Claude, Cursor, VS Code and other MCP clients with OAuth sign-in to your Code4 workspace.
 </p>
 
 [Code4](https://code4.space) is a software development platform for teams and AI agents: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Chat messages, issues, code reviews, documents, call transcripts and commit messages go into one knowledge base that answers under each person's own permissions. The source code of your repositories is part of it too: assistants search it with full-text code search and symbol lookup, without embeddings.
@@ -43,7 +43,7 @@ This repository holds the public listing files for MCP directories and clients: 
 
 Ready-made commands are also in the Code4 app under **Preferences → AI Integrations → AI clients**.
 
-**Current status:** sign-in is tested end to end with Claude (claude.ai, Claude Desktop and Claude Code) and Cursor. The other clients below use the same OAuth sign-in, but we have not tested each of them end to end yet; their sections say so.
+**Current status:** sign-in is tested end to end with Claude (claude.ai, Claude Desktop and Claude Code), Cursor and VS Code (GitHub Copilot). The other clients below use the same OAuth sign-in, but we have not tested each of them end to end yet; their sections say so.
 
 We test new client versions as they come out. If a client below does not connect, write to support@code4.space with the client name and version.
 
@@ -120,8 +120,6 @@ Or add this to `~/.cursor/mcp.json`:
 Open **Cursor Settings → MCP** and click **Connect** next to `c4` if Cursor asks you to sign in.
 
 ### VS Code (GitHub Copilot)
-
-Sign-in from VS Code is not tested end to end yet. If it does not connect, write to support@code4.space.
 
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Code4-0098FF?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=c4&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.code4.space%2Fmcp%22%7D)
 
