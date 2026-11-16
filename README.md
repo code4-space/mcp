@@ -8,7 +8,7 @@
   Connect Claude, Cursor and other MCP clients with OAuth sign-in to your Code4 workspace.
 </p>
 
-[Code4](https://code4.space) is a software development platform for teams and AI agents: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Chat messages, issues, code reviews, documents, call transcripts and commit messages go into one knowledge base that answers under each person's own permissions. Source code is not in the knowledge base: assistants search it with the repository tools.
+[Code4](https://code4.space) is a software development platform for teams and AI agents: issues and boards, git hosting and code review, CI/CD pipelines, deployments to your own Kubernetes, documents, chat and calls. Chat messages, issues, code reviews, documents, call transcripts and commit messages go into one knowledge base that answers under each person's own permissions. The source code of your repositories is part of it too: assistants search it with full-text code search and symbol lookup, without embeddings.
 
 The Code4 MCP server is a hosted [Model Context Protocol](https://modelcontextprotocol.io) server. With it, your AI assistant works with your issues, code reviews, repositories, pipelines, deployments and documents, and searches what your team discussed and decided, as you and with your permissions.
 
